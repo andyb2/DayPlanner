@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Work Day Scheduler</title>
+</head>
+
+<body>
+  <header class="jumbotron">
+    <h1 class="display-3">Work Day Scheduler</h1>
+    <p class="lead">A simple calendar app for scheduling your work day</p>
+    <p id="currentDay" class="lead"></p>
+  </header>
+
+  <div class="container">
+    <div id="row-8" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time8" class="col-md-1 hour time-block">8:00 AM</div>
+      <textarea rows="3" id="text-entry1" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-9" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time9" class="col-md-1 hour time-block">9:00 AM</div>
+      <textarea rows="3" id="text-entry2" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-10" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time10" class="col-md-1 hour time-block">10:00 AM</div>
+      <textarea rows="3" id="text-entry3" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-11" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time11" class="col-md-1 hour time-block">11:00 AM</div>
+      <textarea rows="3" id="text-entry4" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-12" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time12" class="col-md-1 hour time-block">12:00 PM</div>
+      <textarea rows="3" id="text-entry5" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-13" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time13" class="col-md-1 hour time-block">1:00 PM</div>
+      <textarea rows="3" id="text-entry6" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-14" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time14" class="col-md-1 hour time-block">2:00 PM</div>
+      <textarea rows="3" id="text-entry7" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-15" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time15" class="col-md-1 hour time-block">3:00 PM</div>
+      <textarea rows="3" id="text-entry8" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-16" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time16" class="col-md-1 hour time-block">4:00 PM</div>
+      <textarea rows="3" id="text-entry9" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-17" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time17" class="col-md-1 hour time-block">5:00 PM</div>
+      <textarea rows="3" id="text-entry10" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+
+    <div id="row-18" class="row justify-content-md-center border-top border-bottom calendar-row">
+      <div id="time18" class="col-md-1 hour time-block">6:00 PM</div>
+      <textarea rows="3" id="text-entry11" class="col-md-10"></textarea>
+      <button id="save" onclick="saveData()" class="col-md-1 saveBtn"><i class="far fa-save"></i></button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script>
+
+  document.querySelector('#currentDay').innerHTML += moment().format('MMMM Do YYYY, h:mm:ss a');
+
+  var objects = [{}]
+  var objHours = parseInt(moment().format('HH'));
+
+  function saveData() {
+
+    for (i = 1; i <= 11; i++) {
+      var dayPlannerText = document.querySelector('#text-entry' + i).value
+      if (dayPlannerText === null) {
+
+      } else {
+        var textBox = document.querySelector('#text-entry' + i).value
+        localStorage.setItem('textBox' + i, JSON.stringify(textBox));
+        objects.push('textBox' + i);
+      }
+    }
+  }
+
+  function startParse() {
+    for (i = 1; i <= 11; i++) {
+      var getParse = JSON.parse(localStorage.getItem('textBox' + i));
+      document.querySelector('#text-entry' + i).innerHTML = getParse;
+    }
+  }
+  startParse();
+
+  for (i = 8; i <= 18; i++) {
+    if (i < objHours) {
+      document.querySelector('#row-' + i).classList.add('past')
+    }
+    if (i === objHours) {
+      document.querySelector('#row-' + i).classList.add('present')
+    }
+    if (i > objHours) {
+      document.querySelector('#row-' + i).classList.add('future')
+    }
+  }
+
+  </script>
+</body>
+
+</html>
